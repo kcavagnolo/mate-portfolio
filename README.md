@@ -1,167 +1,47 @@
-# Gatsby Starter: Mate
+# Personal Portfolio POC
 
-[![Build Status](https://travis-ci.org/EmaSuriano/gatsby-starter-mate.svg?branch=master)](https://travis-ci.org/EmaSuriano/gatsby-starter-mate)
-[![eslint](https://img.shields.io/badge/eslint-enabled-green.svg)](https://eslint.org/)
-[![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
-[![This project is using Percy.io for visual regression testing.](https://percy.io/static/images/percy-badge.svg)](https://percy.io/Ema-suriano/gatsby-starter-mate)
-[![Netlify Status](https://api.netlify.com/api/v1/badges/f532a32d-4fc1-441d-aa28-cdc5e2c2e79c/deploy-status)](https://app.netlify.com/sites/gatsby-starter-mate/deploys)
+An accessible and fast portfolio built with Gatsby.
 
-![Gatsby Starter Mate logo](./media/gatsby-starter-mate-logo.png)
+[![Travis Status](https://travis-ci.com/kcavagnolo/mate-portfolio.svg?token=Trtw5wviXy4sipUgT6Lm&branch=master)](https://travis-ci.com/kcavagnolo/mate-portfolio)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/59e9986a-c9f6-475f-959e-46d00cd5ab6b/deploy-status)](https://app.netlify.com/sites/kcavagnolo/deploys)
+[![This project is using Percy.io for visual regression testing.](https://percy.io/static/images/percy-badge.svg)](https://percy.io/Primordial-Analytics/personal-portfolio)
 
-> An accessible and fast portfolio starter for Gatsby integrated with Contentful CMS.
+## Setup
 
-The target audience are Developers 💻 and Tech Writers ✍️.
+1. [Set up Gatsby dev](https://www.gatsbyjs.org/tutorial/part-zero/).
+2. Create an empty space at [Contentful](https://www.contentful.com/).
+3. Navigate to Settings --> API keys and copy:
+   - `Space ID`
+   - `Content Delivery API - access token`
+   - `Personal Access Token`
+4. Run the setup script:
 
-### [Check the Demo ✨](https://gatsby-starter-mate.netlify.com/)
+   ```bash
+   yarn setup
+   ```
 
-<a href="https://www.buymeacoffee.com/emasuriano" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/purple_img.png" alt="Buy Me A Coffee" style="height: 41px !important;width: 174px !important;box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;-webkit-box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;" ></a>
+5. Launch the dev site locally:
 
-## Why? 🤔
+   ```bash
+   yarn start
+   ```
 
-In case you are looking for a quick setup portfolio or upgrade your current, you have to definitely try Mate!
+Access the local dev site at [http://localhost:8000/](http://localhost:8000/).
 
-This starter is totally content based on [Contentful](https://contentful.com), which is a headless CMS where you can write the content for your page. In summary, Contentful is the Model when Gatsby with React is the View.
+## Build Site
 
-At the same time, as this portfolio is written with Gatsby is extremely easy to add more than one source of data! For example, the demo comes with an integration of [Medium](https://medium.com) posts based on a user name ✌️
+Environment variables are stored in the `.env` file and is excluded via the `.gitignore` file. To deploy the website, add `SPACE_ID` and `ACCESS_TOKEN` with all `build` commands. The result of builds flow into the `public` folder. On Netlify, do the following:
 
-## Features 🛠
+1. Navigate to Build & deploy --> Environment
+2. Click "Edit variables"
+3. Add a "New variable"
+4. Add and set `ACCESS_TOKEN` to the Contentful `Content Delivery API - access token` from above
+5. Add and set `SPACE_ID` to the Contentful `Space ID` from above
+6. Navigate to Build & deploy --> Build settings and set "Build command" to:
 
-- [Gatsby v2](https://www.gatsbyjs.org/)
-- [Rebass 3.0 🎉](https://rebassjs.org/): styled component system
-- [React Reveal](https://www.react-reveal.com/)
-- Dynamic content from [Contentful](https://contentful.com)
-- Offline support
-- PWA ready
-- SEO
-- Responsive design
-- Icons from [font-awesome](https://fontawesome.com/)
-- [Netlify](https://www.netlify.com) Deployment Friendly
-- Medium integration
-- Social sharing (Twitter, Facebook, Google, LinkedIn)
-- Developer tools:
-  - `eslint`
-  - `prettier`
-- Google Analytics integration
-- End to End with Cypress:
-  - A11y testing with [Axe](https://www.deque.com/axe/)
-  - Visual Testing with [Percy](https://percy.io/)
-
-### Lighthouse Score 💯
-
-![Lighthouse Score](media/lighthouse-score.png)
-
-## How to start ▶️
-
-As this process needs more steps compared to other starters, I decided to made a tutorial video of how to set up your own instance of Mate. You can follow the video or jump directly to the written documentation.
-
-<p align="center">
-  <a href="https://www.youtube.com/watch?v=YviWsypJF9c">
-   <img src="https://media.giphy.com/media/LQp2DrNPPUPybUwVx9/giphy.gif" alt="Watch the tutorial"/>
-  </a>
-</p>
-
-If you never used Gatsby before, I highly recommend you to [Set up your development environment](https://www.gatsbyjs.org/tutorial/part-zero/)!
-
-To copy and install this starter run this command:
-
-```bash
-$ gatsby new mate-portfolio https://github.com/EmaSuriano/gatsby-starter-mate
-```
-
-At this point you have the repository download with all the dependencies installed, but if you try to start by running `yarn develop` you are going to received this message in the console:
-
-```bash
-  TypeError: Expected parameter accessToken
-```
-
-This is because you didn't specify from which `Contentful` space the portfolio will take the information. So the next step is create an empty space in [Contentful](https://www.contentful.com/)!
-
-After the space is created, run the following command:
-
-```bash
-yarn setup
-```
-
-This CLI will request 3 values:
-
-- `Space ID`
-- `Content Delivery API - access token`
-- `Personal Access Token`
-
-These 3 values are inside the Settings section --> API keys.
-
-After you provide them the CLI will automatically starts copying all the `Content models` and `Contents` from `mate-demo-contentful` to your space ✨
-
-If everything went smooth you should see something like this in your terminal:
-
-```text
-Writing config file...
-Config file /Users/my-user/Git/test/mate-portfolio/.env written
-┌──────────────────────────────────────────────────┐
-│ The following entities are going to be imported: │
-├─────────────────────────────────┬────────────────┤
-│ Content Types                   │ 3              │
-├─────────────────────────────────┼────────────────┤
-│ Editor Interfaces               │ 3              │
-├─────────────────────────────────┼────────────────┤
-│ Entries                         │ 8              │
-├─────────────────────────────────┼────────────────┤
-│ Assets                          │ 6              │
-├─────────────────────────────────┼────────────────┤
-│ Locales                         │ 1              │
-├─────────────────────────────────┼────────────────┤
-│ Webhooks                        │ 0              │
-└─────────────────────────────────┴────────────────┘
- ✔ Validating content-file
- ✔ Initialize client (1s)
- ✔ Checking if destination space already has any content and retrieving it (2s)
- ✔ Apply transformations to source data (1s)
- ✔ Push content to destination space
-   ✔ Connecting to space (1s)
-   ✔ Importing Locales (1s)
-   ✔ Importing Content Types (4s)
-   ✔ Publishing Content Types (3s)
-   ✔ Importing Editor Interfaces (3s)
-   ✔ Importing Assets (7s)
-   ✔ Publishing Assets (3s)
-   ✔ Archiving Assets (1s)
-   ✔ Importing Content Entries (1s)
-   ✔ Publishing Content Entries (5s)
-   ✔ Archiving Entries (1s)
-   ✔ Creating Web Hooks (0s)
-Finished importing all data
-```
-
-After this step we can finally run the project and see the result in http://localhost:8000/ 😃
-
-```bash
-$ yarn start
-```
-
-## Screenshot and Design 🖼
-
-As the starter is a SPA it only has two routes:
-
-- `/`: main page with the sections of `Home`, `About me`, `Projects` and `Writing`.
-- `/404`: error page for unexpected route.
-
-| Section  |           Screenshot            |
-| -------- | :-----------------------------: |
-| Home     |     ![Home](media/home.png)     |
-| About me |  ![About me](media/about.png)   |
-| Projects | ![Projects](media/projects.png) |
-| Writing  |  ![Writing](media/writing.png)  |
-| /404     |      ![404](media/404.png)      |
-
-## Building your site 📦
-
-As we are dealing with environment variables, the `.env` file is excluded from `.gitignore` file. Therefore, in order to deploy the website you have to send `SPACE_ID` and `ACCESS_TOKEN` with the `build` command.
-
-```bash
-SPACE_ID=xxxxx ACCESS_TOKEN=yyyyy yarn build
-```
-
-The result will be stored inside the `public` folder, so you can upload to your web host. I highly suggest using this starter with Netlify when you can define which command will build the project and also send the environment variables inside the website configuration.
+   ```bash
+   SPACE_ID=$SPACE_ID ACCESS_TOKEN=$ACCESS_TOKEN yarn build
+   ```
 
 ## Adding your information 📝
 
@@ -252,14 +132,30 @@ In case you want to know more I wrote an article in Medium that explains the who
 
 **UPDATE:** Contentful added a feature to link it with Netlify as a built in option, but in case you are using another provider I recommend going with Zapier!
 
-## Contributing 💪
+## Maintenance
 
-I came with the idea of creating the starter after the positive feedback I received when I deployed [my website](https://emasuriano.com/). Therefore this starter is not perfect! I tried my best to remove all the personal information, also improve the code to make it easier to understand.
+### Lighthouse
 
-I'm totally open for pull requests with bug fixes, changes in Documentation, or new features to the starter 🙌
+[Lighthouse](https://developers.google.com/web/tools/lighthouse) is an open-source, automated tool for improving the quality of web pages. To use:
 
-Please check the [Contribution guidelines](CONTRIBUTING.md) before opening yours 🙏
+```bash
+npm install -g lighthouse
+lighthouse https://kcavagnolo.netlify.com/
+```
 
-## License 📝
+## Credits
 
-MIT.
+- [Mate Starter Template](https://github.com/EmaSuriano/gatsby-starter-mate) -- EmaSuriano's template
+- [Gatsby](https://www.gatsbyjs.org/) -- React and GraphQL website framework
+- [Rebass](https://rebassjs.org/) -- styled component system
+- [React Reveal](https://www.react-reveal.com/) -- animation framework for React
+- [Contentful](https://contentful.com) -- dynamic content
+- [font-awesome](https://fontawesome.com/) -- fonts and icons
+- [Netlify](https://www.netlify.com) -- build, test, and deploy
+- [Medium](https://medium.com) -- blogging
+- [Axe](https://www.deque.com/axe/) -- A11y testing
+- [Percy](https://percy.io/) -- visual testing
+
+## License
+
+This work is licensed under the [MIT License](LICENSE).
